@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientproduct index{% endblock %}
+
+{% block body %}
+    <table id="datatablesSimple" class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>name</th>
+            <th>address</th>
+            <th>email</th>
+            <th>product</th>
+            <th>description</th>
+            <th>prix</th>
+            <th>image</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        {% for clientproduct in clientproducts %}
+            {% for product in clientproduct.products %}
+
+                <tr>
+                    <td>{{ clientproduct.id }}</td>
+                    <td>{{ clientproduct.CustomerName }}</td>
+                    <td>{{ clientproduct.CustomerAddress }}</td>
+                    <td>{{ clientproduct.customerEmail }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.prix }} TND</td>
+                    <td>
+                        {% if product.imageName %}
+                            <img style="max-width: 60px; max-height: 60px" src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="Product Image">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td><a class="btn btn-danger" href="{{ path('app_clientproduct_delete', {'id': clientproduct.id}) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

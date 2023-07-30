@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product list{% endblock %}
+
+{% block body %}
+{#    <div class=" col-lg-4 "></div>#}
+<div class="text-center mt-1">
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>
+                        {% if product.category %}
+                            {{ product.category.name }}
+                        {% else %}
+                            Aucune catégorie
+                        {% endif %}
+                    </td>
+                    <td>{{ product.prix }}</td>
+                    <td>
+                        <a type="button" class="btn btn-info" href="{{ path('app_product_show', {'id': product.id}) }}">Show</a>
+                        <a type="button" class="btn btn-warning" href="{{ path('app_product_edit', {'id': product.id}) }}">Edit</a>
+                        <!-- <a type="button" class="btn btn-danger" href="{{ path('app_product_delete', {'id': product.id}) }}">Delete</a> -->
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+        {% endblock %}
+
+
+
+
+
+
+
