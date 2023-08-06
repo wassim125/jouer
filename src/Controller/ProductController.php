@@ -162,8 +162,8 @@ class ProductController extends AbstractController
                     'name' => $product->getName(),
                     'price' => $product->getPrix(),
                     'description' => $product->getDescription(),
-                    'image' => $uploaderHelper->asset($product, 'imageFile') // Génère l'URL complète de l'image
-                    // Ajoutez ici d'autres attributs du produit si nécessaire
+                    'image' => $uploaderHelper->asset($product, 'imageFile')
+
                 ];
 
                 $categoryData['product'][] = $productData;
