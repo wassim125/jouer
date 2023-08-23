@@ -40,8 +40,8 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'product')]
     private ?Category $category = null;
 
-    #[ORM\ManyToMany(targetEntity: Clientproduct::class, mappedBy: 'favoris')]
-    private Collection $clientproducts;
+//    #[ORM\ManyToMany(targetEntity: Clientproduct::class, mappedBy: 'favoris')]
+//    private Collection $clientproducts;
 
     #[ORM\ManyToMany(targetEntity: Clientproduct::class, inversedBy: 'products')]
     private Collection $clientproductselect;
@@ -154,24 +154,24 @@ public function getClientproducts(): Collection
     return $this->clientproducts;
 }
 
-public function addClientproduct(Clientproduct $clientproduct): static
-{
-    if (!$this->clientproducts->contains($clientproduct)) {
-        $this->clientproducts->add($clientproduct);
-        $clientproduct->addFavori($this);
-    }
+//public function addClientproduct(Clientproduct $clientproduct): static
+//{
+//    if (!$this->clientproducts->contains($clientproduct)) {
+//        $this->clientproducts->add($clientproduct);
+//        $clientproduct->addFavori($this);
+//    }
+//
+//    return $this;
+//}
 
-    return $this;
-}
-
-public function removeClientproduct(Clientproduct $clientproduct): static
-{
-    if ($this->clientproducts->removeElement($clientproduct)) {
-        $clientproduct->removeFavori($this);
-    }
-
-    return $this;
-}
+//public function removeClientproduct(Clientproduct $clientproduct): static
+//{
+//    if ($this->clientproducts->removeElement($clientproduct)) {
+//        $clientproduct->removeFavori($this);
+//    }
+//
+//    return $this;
+//}
 
 /**
  * @return Collection<int, Clientproduct>

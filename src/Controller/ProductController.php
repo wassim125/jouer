@@ -162,7 +162,7 @@ class ProductController extends AbstractController
                     'name' => $product->getName(),
                     'price' => $product->getPrix(),
                     'description' => $product->getDescription(),
-                    'image' => $uploaderHelper->asset($product, 'imageFile')
+                  'image' => $uploaderHelper->asset($product, 'imageFile')
 
                 ];
 
